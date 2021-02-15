@@ -31,6 +31,7 @@ class PostAdmin(admin.ModelAdmin):
     }
 
     form = PostAdminForm
+    save_as = True
 
 
 admin.site.register(Category, CategoryAdmin)
