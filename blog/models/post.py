@@ -1,30 +1,6 @@
 from django.db import models
-
-
-class Category(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, verbose_name='URL категории', unique=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Категория(ю)'
-        verbose_name_plural = 'Категории'
-        ordering = ['title']
-
-
-class Tag(models.Model):
-    title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50, verbose_name='URL тега', unique=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
-        ordering = ['title']
+from .tag import Tag
+from .category import Category
 
 
 class Post(models.Model):
@@ -44,6 +20,7 @@ class Post(models.Model):
         return self.title
 
     class Meta:
+        app_label = "blog"
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
         ordering = ['-created_at']
