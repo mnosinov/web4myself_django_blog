@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from .tag import Tag
 from .category import Category
 
@@ -18,6 +19,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={"slug": self.slug})
 
     class Meta:
         app_label = "blog"
