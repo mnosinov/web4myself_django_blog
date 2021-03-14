@@ -19,7 +19,7 @@ class PostsByCategory(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 1
-    allow_empty = False
+    allow_empty = True
 
     def get_queryset(self):
         return Post.objects.filter(category__slug=self.kwargs['slug'])
